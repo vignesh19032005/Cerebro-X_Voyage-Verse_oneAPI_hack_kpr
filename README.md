@@ -28,13 +28,12 @@
 ## **How It Works**
 
 **Input**:  
-Enter your desired travel preferences (dates, budget, destination, activities, etc.).
-
+![input]()
+<!--
 **Output**:  
-Receive a personalized, AI-generated travel itinerary.
-
+-->
 ---
-
+<!---
 ## **Usage**
 
 1. Clone the repository:
@@ -55,7 +54,7 @@ Receive a personalized, AI-generated travel itinerary.
     ```
 
 ---
-
+--->
 ## **Technologies Used**
 
 - **Backend**: Django  
@@ -66,7 +65,7 @@ Receive a personalized, AI-generated travel itinerary.
 - **APIs**: Foursquare (Places), OpenCage (Geolocation)
 
 ---
-
+<!---
 ## **Advantages of Migrating to OneAPI**
 
 - Availability of High Computing Services  
@@ -88,6 +87,4 @@ To utilize Intel's acceleration, we're using the library `intel_extension_for_py
 ```python
 import intel_extension_for_pytorch as ipex
 optimized_tag_generator = ipex.optimize(tag_generator, dtype=torch.bfloat16)
-
-
-This format adds a professional structure to the README, with bolded headers, borders (using `---`), and proper code formatting where necessary.
+--->
