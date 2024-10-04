@@ -59,26 +59,12 @@
 --->  
 ## **Technologies Used**
 
-- ![Django](https://your-image-link.com/django-icon.png) **Backend**: Django  
-
-- ![HTML](https://your-image-link.com/html-icon.png) ![CSS](https://your-image-link.com/css-icon.png) ![JavaScript](https://your-image-link.com/js-icon.png) **Frontend**: HTML, CSS, JavaScript  
-
-- ![Hugging Face](https://your-image-link.com/huggingface-icon.png) **Language Models**: Hugging Face Transformers Library  
-
-- ![Intel Acceleration](https://your-image-link.com/intel-icon.png) **Acceleration Library**: Intel Acceleration Library and AutoAWQ  
-
-- ![Intel DevCloud](https://your-image-link.com/intel-devcloud-icon.png) **Deployment**: Intel DevCloud  
-
-- ![Foursquare](https://your-image-link.com/foursquare-icon.png) ![OpenCage](https://your-image-link.com/opencage-icon.png) **APIs**: Foursquare (Places), OpenCage (Geolocation)  
-
-- ![Google Maps API](https://your-image-link.com/google-maps-api-icon.png) **API**: Google Maps  
-
-- ![Leaflet](https://your-image-link.com/leaflet-icon.png) **Library**: Leaflet  
-
-- ![OpenWeatherMap API](https://your-image-link.com/openweathermap-api-icon.png) **API**: OpenWeatherMap  
-
-- ![Python](https://your-image-link.com/python-icon.png) **Programming Language**: Python  
-
+- ![Django](https://img.shields.io/badge/Django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white) **Backend**: Django  
+- ![HTML](https://img.shields.io/badge/HTML5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS](https://img.shields.io/badge/CSS3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black) **Frontend**: HTML, CSS, JavaScript  
+- ![Hugging Face](https://img.shields.io/badge/Hugging%20Face-%23FFD700.svg?style=for-the-badge&logo=huggingface&logoColor=white) **Language Models**: Hugging Face Transformers Library  
+- ![Intel Acceleration Library](https://img.shields.io/badge/Intel-0071C5.svg?style=for-the-badge&logo=intel&logoColor=white) **Acceleration Library**: Intel Acceleration Library and AutoAWQ  
+- ![Intel DevCloud](https://img.shields.io/badge/Intel%20DevCloud-%230071C5.svg?style=for-the-badge&logo=intel&logoColor=white) **Deployment**: Intel DevCloud  
+- ![Foursquare](https://img.shields.io/badge/Foursquare-%23F94877.svg?style=for-the-badge&logo=foursquare&logoColor=white) ![OpenCage](https://img.shields.io/badge/OpenCage-%23A0C3D2.svg?style=for-the-badge&logo=opencage&logoColor=white) **APIs**: Foursquare (Places), OpenCage (Geolocation)
 
 ---
 <!---
