@@ -28,7 +28,9 @@
 ## **How It Works**
 
 **Input**:  
-![input]()
+![home](home.jpg)
+![modal](modal.jpg)
+![top](top.jpg)
 <!--
 **Output**:  
 -->
@@ -54,15 +56,15 @@
     ```
 
 ---
---->
+--->  
 ## **Technologies Used**
 
-- **Backend**: Django  
-- **Frontend**: HTML, CSS, JavaScript  
-- **Language Models**: Hugging Face Transformers Library  
-- **Acceleration Library**: Intel Acceleration Library and AutoAWQ  
-- **Deployment**: Intel DevCloud  
-- **APIs**: Foursquare (Places), OpenCage (Geolocation)
+- ![Django](https://img.shields.io/badge/Django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white) **Backend**: Django  
+- ![HTML](https://img.shields.io/badge/HTML5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS](https://img.shields.io/badge/CSS3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black) **Frontend**: HTML, CSS, JavaScript  
+- ![Hugging Face](https://img.shields.io/badge/Hugging%20Face-%23FFD700.svg?style=for-the-badge&logo=huggingface&logoColor=white) **Language Models**: Hugging Face Transformers Library  
+- ![Intel Acceleration Library](https://img.shields.io/badge/Intel-0071C5.svg?style=for-the-badge&logo=intel&logoColor=white) **Acceleration Library**: Intel Acceleration Library and AutoAWQ  
+- ![Intel DevCloud](https://img.shields.io/badge/Intel%20DevCloud-%230071C5.svg?style=for-the-badge&logo=intel&logoColor=white) **Deployment**: Intel DevCloud  
+- ![Foursquare](https://img.shields.io/badge/Foursquare-%23F94877.svg?style=for-the-badge&logo=foursquare&logoColor=white) ![OpenCage](https://img.shields.io/badge/OpenCage-%23A0C3D2.svg?style=for-the-badge&logo=opencage&logoColor=white) **APIs**: Foursquare (Places), OpenCage (Geolocation)
 
 ---
 <!---
