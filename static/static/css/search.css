@@ -1,0 +1,556 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+.content-wrapper {
+    padding-top: 80px; /* Increase this value to push content further down */
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    margin-top: 0; /* Remove default top margin */
+}
+
+/* Night Mode Styles */
+body.night-mode {
+    background-color: #2C2C2C;
+    color: white;
+}
+
+.container, .summary-section, .news-section, .weather-container, .weather-card {
+    background-color: #f9f9f9;
+    color: black;
+}
+
+body.night-mode .container,
+body.night-mode .summary-section,
+body.night-mode .news-section,
+body.night-mode .weather-container,
+body.night-mode .weather-card {
+    background-color: #333333;
+    color: white;
+}
+
+.tablinks.active {
+    color: #E1D14E;
+}
+
+.map {
+    background-color: #ddd;
+}
+
+.weather-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.night-mode .weather-container {
+    border-color: #555;
+}
+
+.weather-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.night-mode .weather-card {
+    border-color: #555;
+    background-color: #444;
+}
+
+.weather-card img {
+    width: 50px;
+    height: 50px;
+}
+
+
+.details-weather-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    gap: 20px;
+}
+
+.details {
+    flex: 2;
+}
+
+.map-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.map {
+    height: 500px;
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: #ddd; /* Placeholder background */
+}
+
+.tablinks {
+    margin-right: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    background: none;
+    border: none;
+    padding: 14px 0;
+}
+/* Default Light Mode */
+.tablinks {
+    color: #000000;
+     /* Default text color in light mode */
+}
+
+.tablinks:hover {
+    color: #FFD700 !important;
+    transform: translateY(-5px); /* Hover effect for light mode */
+}
+
+/* Dark Mode */
+body.night-mode .tablinks {
+    color: #FFFFFF; /* Default text color in dark mode */
+}
+
+body.night-mode .tablinks:hover {
+    color: #FFD700 !important; /* Hover effect for dark mode */
+}
+.tablinks.active {
+    color: #E1D14E;
+}
+
+.tabcontent {
+    display: none;
+    padding: 6px 0;
+}
+
+.tabcontent.active {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-section {
+    flex: 2;
+}
+
+.scroll-box {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.details h2,
+.details p {
+    margin-bottom: 10px;
+}
+
+/* Summary and News Section Styles */
+.summary-section, .news-section {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.summary-section {
+    flex: 2;
+}
+
+.news-section {
+    flex: 1;
+}
+
+.summary-section h2, .news-section h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.news-articles {
+    list-style: none;
+    padding: 0;
+}
+
+.news-articles li {
+    margin-bottom: 10px;
+}
+
+        /* General Light Mode Styles */
+.news-articles li a {
+    text-decoration: none;
+    color: #333;  /* Default text color for light mode */
+    font-weight: bold;
+}
+
+/* Night Mode Styles */
+body.night-mode .news-articles li a {
+    color: #e0e0e0;  /* Lighter color for night mode */
+}
+
+        /* Styles for the overall weather container */
+.weather-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #f1f1f1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 100%;  /* Full width */
+    margin: 0 auto; /* Centered */
+}
+
+/* Flex layout for weather cards inside the box */
+.weather-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* Styles for each weather card */
+.weather-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 120px; /* Fixed width for each card */
+}
+
+/* Adjust the weather icon size */
+.weather-card img {
+    width: 50px;
+    height: 50px;
+}
+
+.weather-card p {
+    margin: 10px 0;
+    font-size: 14px;
+}
+.top-nav {
+position: fixed; /* Make the nav fixed at the top */
+top: 0; /* Align it to the top of the page */
+left: 0;
+width: 100%; /* Full width */
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #333;
+padding-right: 5px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+z-index: 1000; /* Ensure it appears above other elements */
+}
+
+.logo {
+flex: 1;
+}
+
+.logo img {
+max-height: 50px;
+}
+
+nav {
+display: flex;
+align-items: center;
+justify-content: flex-end;
+flex: 2;
+}
+
+nav ul {
+list-style: none;
+padding: 0;
+margin: 0;
+display: flex;
+gap: 20px;
+align-items: center;
+}
+
+nav ul li {
+margin: 0;
+}
+
+nav ul li a {
+color: #fff;
+text-decoration: none;
+transition: transform 0.5s, color 0.3s ease;
+}
+
+nav ul li a:hover {
+color: #6E2AF5;
+transform: translateY(-5px);
+}
+
+.nav-icons {
+display: flex;
+align-items: center;
+margin-right: 10px; /* Adjust this value to create space between the nav items and the toggle button */
+}
+
+.nav-icons{
+color: #fff;
+}
+.icon-bell {
+font-size: 20px;
+margin-right: 20px;
+cursor: pointer;
+}
+
+.profile-container {
+position: relative;
+}
+
+.profile-pic {
+width: 40px;
+height: 40px;
+border-radius: 50%;
+cursor: pointer;
+}
+
+.dropdown-menu {
+display: none;
+position: absolute;
+top: 50px;
+right: 0;
+background-color: #333;
+color: #f5f5f5;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+border-radius: 8px;
+width: 250px;
+z-index: 1000;
+}
+
+
+.profile-summary {
+text-align: center;
+padding: 10px;
+}
+
+.profile-pic-large {
+width: 50px;
+height: 50px;
+border-radius: 50%;
+margin-bottom: 10px;
+}
+
+.dropdown-menu hr {
+margin: 10px 0;
+border: none;
+border-top: 1px solid #eaeaea;
+}
+
+.dropdown-menu ul {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+
+.dropdown-menu ul li {
+margin: 0;
+}
+
+.dropdown-menu ul li a {
+display: flex;
+align-items: center;
+padding: 10px;
+text-decoration: none;
+color: #fff;
+font-size: 14px;
+}
+
+.dropdown-menu ul li a:hover {
+background-color: #fff;
+color: #333;
+}
+
+.dropdown-menu ul li a i {
+margin-right: 10px;
+font-size: 16px;
+}
+
+.upload-btn {
+display: block;
+padding: 10px;
+text-align: center;
+background-color: #007bff;
+color: #fff;
+border-radius: 5px;
+cursor: pointer;
+margin: 10px 0;
+}
+
+#profile-details {
+padding: 10px;
+}
+
+.close-btn {
+float: right;
+background: none;
+border: none;
+font-size: 20px;
+cursor: pointer;
+color: #333;
+}
+
+.settings-menu {
+display: none;
+position: absolute;
+top: 50px;
+right: 0;
+background-color: #ffffff;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+border-radius: 8px;
+width: 150px;
+z-index: 1000;
+padding: 10px;
+}
+
+.night-mode-toggle {
+background: #007bff;
+color: #fff;
+border: none;
+padding: 0.5rem;
+border-radius: 50%;
+cursor: pointer;
+font-size: 1.5rem;
+transition: background 0.3s;
+}
+
+.night-mode-toggle:hover {
+background: #0056b3;
+}
+.footer{
+text-align: center;
+}
+/* Reset body and html margins and paddings */
+html, body {
+margin: 0;
+padding: 0;
+height: 100%; /* Ensure body takes full height */
+}
+
+/* Footer styles */
+footer {
+width: 100%;
+background-color: #333; /* Your background color */
+color: white; /* Your text color */
+text-align: center;
+padding: 15px 0; /* Vertical padding */
+position: relative; /* Context for absolute positioning */
+bottom: 0; /* Aligns it to the bottom */
+left: 0; /* Aligns to the left */
+}
+
+/* Ensure footer is not affected by margins from other elements */
+footer p {
+margin: 0; /* Remove default margins */
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* This adds space between the buttons */
+    margin-top: 20px;
+}
+
+/* Updated button styles */
+.buttn {
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 25px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.buttn i {
+    margin-right: 8px;
+}
+
+.buttn.btn-pdf {
+    background-color: #007bff;
+    color: white;
+}
+
+.buttn.btn-pdf:hover {
+    background-color: #0056b3;
+}
+
+.buttn.btn-whatsapp {
+    background-color: #25D366;
+    color: white;
+}
+
+.buttn.btn-whatsapp:hover {
+    background-color: #128C7E;
+}
+
+.buttn:hover {
+    transform: translateY(-2px);
+}
+/* Add this to your existing <style> tag or CSS file */
+
+@keyframes placeHolderShimmer {
+0% {
+background-position: -800px 0
+}
+100% {
+background-position: 800px 0
+}
+}
+
+.loading-effect {
+position: relative;
+background-color: #f6f7f8;
+height: 100%;
+overflow: hidden;
+}
+
+.animated-background {
+animation-duration: 2s;
+animation-fill-mode: forwards;
+animation-iteration-count: infinite;
+animation-name: placeHolderShimmer;
+animation-timing-function: linear;
+background: linear-gradient(to right, #eeeeee 8%, #9e5d5d 18%, #eeeeee 33%);
+background-size: 800px 104px;
+height: 100%;
+position: relative;
+}
+
+.loading-content {
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+}
+
+.background-masker {
+background-color: #f6f7f8;
+position: absolute;
+}
+
+.loading-text-line {
+height: 10px;
+margin: 10px;
+background-color: #ddd;
+}

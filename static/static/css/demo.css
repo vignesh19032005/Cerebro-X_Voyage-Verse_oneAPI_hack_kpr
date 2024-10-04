@@ -1,0 +1,660 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    padding-top: 80px;
+    background-color: #333; /* Light mode background */
+    color: #f5f5f5; /* Light mode text color */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    background-color: #fff;
+    color: #333;
+}
+
+.top-nav {
+    position: fixed; /* Make the nav fixed at the top */
+    top: 0; /* Align it to the top of the page */
+    left: 0;
+    width: 100%; /* Full width */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding-right: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+
+.logo {
+    flex: 1;
+}
+
+.logo img {
+    max-height: 50px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 2;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: transform 0.5s, color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #6E2AF5;
+    transform: translateY(-5px);
+}
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+    margin-right: 10px; /* Adjust this value to create space between the nav items and the toggle button */
+}
+
+.nav-icons{
+    color: #fff;
+}
+.icon-bell {
+    font-size: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.profile-container {
+    position: relative;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #333;
+    color: #f5f5f5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 250px;
+    z-index: 1000;
+}
+
+
+.profile-summary {
+    text-align: center;
+    padding: 10px;
+}
+
+.profile-pic-large {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.dropdown-menu hr {
+    margin: 10px 0;
+    border: none;
+    border-top: 1px solid #eaeaea;
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu ul li {
+    margin: 0;
+}
+
+.dropdown-menu ul li a {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+}
+
+.dropdown-menu ul li a:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+.dropdown-menu ul li a i {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.upload-btn {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+#profile-details {
+    padding: 10px;
+}
+
+.close-btn {
+    float: right;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+}
+
+.settings-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 150px;
+    z-index: 1000;
+    padding: 10px;
+}
+
+.night-mode-toggle {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: background 0.3s;
+}
+
+.night-mode-toggle:hover {
+    background: #0056b3;
+}
+.search-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 1000px;
+    margin: 40px auto;
+    color: #fff;
+}
+
+.search-bar h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.search-bar form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.search-bar input[list] {
+    padding: 10px;
+    width: 250px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.search-bar button {
+    padding: 15px 30px;
+    font-size: 16px;
+    background-color: #00C1D4;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-bar .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-bar input[type="text"],
+.search-bar input[type="date"],
+.search-bar select {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 250px;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #333;
+}
+
+.search-bar .form-group h3 {
+    margin: 0 0 5px;
+    font-size: 18px;
+    color: #fff;
+}
+
+.search-bar button {
+    padding: 15px 30px;
+    font-size: 16px;
+    background-color: #00C1D4;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    align-self: center;
+}
+
+.search-bar button:hover {
+    background-color: #00a0b2;
+}
+
+/* Why Choose Us Section Styles */
+/* Why Choose Us Section Styles for Light Mode (default) */
+.why-choose-us {
+    padding: 50px;
+    background-color: #333; /* Light background for contrast */
+    text-align: center;
+    color: #f4f4f4;
+    margin-top: 20px;
+}
+.dark-mode .why-choose-us {
+    background-color: #f4f4f4; /* Darker background for dark mode */
+    color: #333; /* Light text color */
+}
+.why-choose-us h2 {
+    font-size: 28px;
+    color: #e1e1e1;
+    margin-bottom: 30px;
+}
+.dark-mode .why-choose-us h2 {
+    color: #333; /* Light color for section title */
+}
+
+.features-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.feature {
+    background-color: #444;
+    padding: 20px;
+    width: 45%; /* Each feature box takes up 45% of the container's width */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+.dark-mode .feature {
+    background-color: #fff; /* Darker background for feature cards */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Slightly darker shadow */
+}
+
+.feature h3 {
+    font-size: 20px;
+    color: #00C1D4; /* Match theme color */
+    margin-bottom: 10px;
+}
+.dark-mode .feature {
+    background-color: #444; /* Darker background for feature cards */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Slightly darker shadow */
+}
+.feature p {
+    font-size: 16px;
+    color: #ddd;
+    line-height: 1.6;
+}
+.dark-mode .feature p {
+    color: #fff; /* Lighter text color for feature descriptions */
+}
+/* Hover effect */
+.feature:hover {
+    transform: translateY(-5px); /* Slight lifting effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* More intense shadow on hover */
+}
+.dark-mode .feature:hover {
+    background-color: #555; /* Change background color on hover in dark mode */
+}
+
+/* Portfolio Section Styles for Light Mode (default) */
+.portfolio {
+    background-color: #333;
+    color: #e1e1e1;
+    padding: 50px;
+}
+.dark-mode .portfolio {
+    background-color: #e1e1e1;
+    color: #333;
+}
+.portfolio h2 {
+    color: #e1e1e1;
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+.dark-mode .portfolio h2 {
+    color: #333;
+}
+
+.portfolio a {
+    color: #fff;
+    text-align: center; /* Center the <a> tag */
+    display: block;
+}
+.portfolio a:hover {
+    color: #333;
+}
+.portfolio-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+.portfolio-item {
+    width: 30%;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Vignette effect on hover */
+}
+.portfolio-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent 60%, rgba(0, 0, 0, 0.7) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.portfolio-item:hover::after {
+    opacity: 1;
+}
+
+.dark-mode .portfolio-item {
+    background-color: #444;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.portfolio-item img {
+    width: 100%;
+    display: block;
+}
+.dark-mode .portfolio-item:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+.image-overlay {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.overlay-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.dark-mode .overlay-content {
+    color: #f1f1f1;
+}
+
+.portfolio-item:hover .overlay-content {
+    opacity: 1;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    width: 100%;
+    box-sizing: border-box; 
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.testimonials {
+    padding: 50px 100px;
+    text-align: center;
+}
+
+.testimonials h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.testimonials p {
+    font-size: 1rem;
+    margin-bottom: 30px;
+}
+
+.testimonial-row {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.testimonial-card {
+    background-color: #fff;
+    color: #333;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 300px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-mode .testimonial-card {
+    background-color: #333;
+    color: white;
+}
+
+.rating {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.review-text {
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.reviewer {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.dark-mode .reviewer {
+    color: #fff;
+}
+
+/* Style the upload field to align elements */
+.upload-field {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Custom file input label styled like a button */
+.file-input-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.file-input-label:hover {
+    background-color: #45a049;
+}
+
+/* Style for the "No file chosen" text */
+.file-chosen-text {
+    color: #ccc;
+    font-size: 14px;
+}
+
+/* Style the Save Photo button */
+.save-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.save-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Style for profile picture preview */
+.profile-pic-preview {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+/* General smooth transition for all elements */
+* {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Fade-in animation */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Slide in from the top */
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Apply the fadeIn animation to different sections */
+  .top-nav {
+    animation: slideIn 1s ease forwards;
+  }
+  
+  .search-bar, .why-choose-us, .portfolio, .testimonials {
+    animation: fadeIn 1.5s ease forwards;
+    opacity: 0;
+  }
+
+  .search-bar {
+    animation-delay: 0.3s;
+  }
+  
+  .why-choose-us {
+    animation-delay: 0.6s;
+  }
+  
+  .portfolio {
+    animation-delay: 0.9s;
+  }
+  
+  .testimonials {
+    animation-delay: 1.2s;
+  }
+  
+@media (max-width: 768px) {
+    .top-nav {
+        padding: 10px;
+    }
+
+    .profile-pic {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+
+

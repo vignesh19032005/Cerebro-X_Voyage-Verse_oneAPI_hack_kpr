@@ -1,0 +1,381 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url(download.jpg);
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+
+body.day-mode {
+    background-color: #ffffff; /* Background for day mode */
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.day-mode header {
+    background-color: #f1f1f1; /* Header background for day mode */
+    color: #333; /* Header text color for day mode */
+}
+
+.logo {
+    flex: 1; /* Ensure the logo takes up space on the left */
+}
+
+.logo img {
+    max-height: 50px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Align nav content to the right */
+    flex: 2; /* Allow nav to take up remaining space */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: transform 0.5s, color 0.3s ease;
+}
+
+body.day-mode nav ul li a {
+    color: #333; /* Link color for day mode */
+}
+
+nav ul li a:hover {
+    color: #6E2AF5;
+    transform: translateY(-5px);
+}
+
+/*.login-button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+*/
+/*
+body.day-mode .login-button {
+background-color: #f1f1f1;
+color: #333; 
+} 
+*/
+/* Button background for day mode */
+/* Button text color for day mode */
+/*.login-button:hover {
+    background-color: #555;
+}
+.login-button:active {
+    background-color: #111;
+}*/
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    width: 100%;
+    box-sizing: border-box; 
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.day-mode footer {
+    background-color: #f1f1f1; /* Footer background for day mode */
+    color: #333; /* Footer text color for day mode */
+}
+
+/* Sections */
+section {
+    padding: 50px 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    text-align: justify;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hero Section */
+.hero {
+    background: url('motorcycle.jpg') no-repeat center center/cover;
+    color: #fff;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+body.day-mode .hero {
+    color: #333; /* Hero text color for day mode */
+}
+
+.get-button {
+    margin-top: 20px; /* Optional: Add some margin if needed */
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.day-mode .get-button {
+    background-color: #f1f1f1; /* Button background for day mode */
+    color: #333; /* Button text color for day mode */
+}
+
+.get-button:hover {
+    background-color: #555;
+}
+
+.get-button:active {
+    background-color: #111;
+}
+
+.get-button .button-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.get-button .button-content i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.get-button:hover .button-content i {
+    transform: translateX(5px);
+}
+
+.hero h1 {
+    font-size: 50px;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 20px;
+}
+
+/* About Section */
+.about {
+    text-align: center;
+    background-color: #fff;
+}
+
+body.day-mode .about {
+    background-color: #f1f1f1; /* About section background for day mode */
+}
+
+/* Contact Section */
+.contact {
+    background-color: #fff;
+    padding: 80px 0;
+    display: flex;
+    justify-content: center;
+}
+
+body.day-mode .contact {
+    background-color: #f1f1f1; /* Contact section background for day mode */
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.contact-left,
+.contact-right {
+    flex-basis: 40%;
+}
+
+.contact-left {
+    text-align: left;
+}
+
+.contact-left h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.contact-left p {
+    margin-top: 30px;
+    font-size: 18px;
+    color: #666;
+}
+
+.social-icons a {
+    color: #666;
+    font-size: 24px;
+    margin-right: 20px;
+    transition: color 0.3s ease;
+}
+
+body.day-mode .social-icons a {
+    color: #333; /* Social icons color for day mode */
+}
+
+.social-icons a:hover {
+    color: #6E2AF5;
+}
+
+.contact-right {
+    background-color: #f8f8f8;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-right h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.contact-right form label {
+    font-size: 16px;
+    color: #333;
+    display: block;
+    margin-top: 20px;
+}
+
+.contact-right form input,
+.contact-right form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+.contact-right form textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.contact-right form button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+body.day-mode .contact-right form button {
+    background-color: #f1f1f1; /* Button background for day mode */
+    color: #333; /* Button text color for day mode */
+}
+
+.contact-right form button:hover {
+    background-color: #555;
+}
+
+.contact-right form button:active {
+    background-color: #111;
+}
+
+/* Night Mode Toggle Button */
+.night-mode-toggle {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: background 0.3s;
+    margin-left: 20px; /* Adjust spacing between the toggle and other nav items */
+}
+
+.night-mode-toggle:hover {
+    background: #0056b3;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    .hero {
+        padding: 50px 20px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    .contact-left,
+    .contact-right {
+        flex-basis: 100%;
+    }
+}
+
+
+
