@@ -88,3 +88,6 @@ To utilize Intel's acceleration, we're using the library `intel_extension_for_py
 ```python
 import intel_extension_for_pytorch as ipex
 optimized_tag_generator = ipex.optimize(tag_generator, dtype=torch.bfloat16)
+
+
+This format adds a professional structure to the README, with bolded headers, borders (using `---`), and proper code formatting where necessary.
