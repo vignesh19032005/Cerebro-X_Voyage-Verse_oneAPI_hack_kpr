@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voyage Verse</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="night-mode"> 
+    <!-- Start with night mode by default -->
+    <video autoplay loop muted play-inline class="back-video">
+        <source src="video.mp4" type="video/mp4">
+    </video>
+    <header>
+        <a href="#home" class="logo">
+            <img src="logo.png" alt="Logo">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                </button>
+                <button class="night-mode-toggle" onclick="toggleNightMode()">
+                    <span id="modeIcon">🌙</span>
+                </button>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home" class="hero">
+            <h1>Welcome to Voyage Verse</h1>
+            <p>Your ultimate destination for Travel query.</p>
+            <button class="button get-button">
+                <span class="button-content" onclick="window.location.href='login1.html';">Get started <i class="fas fa-arrow-right"></i></span>
+            </button>
+        </section>
+        
+        <section id="about" class="about">
+            <div class="about-container">
+                <div class="about-column">
+                    <h1>About Us</h1>
+                    <p>Welcome to Voyage Verse. At Voyage Verse, our mission is to revolutionize the way you experience travel. We’re passionate about crafting personalized, memorable journeys that align perfectly with your interests and preferences.</p>
+                    <h1>Our Vision</h1>
+                    <p>We believe that every journey should be unique and tailored to your desires. Our vision is to provide travelers with an intelligent, intuitive tool that makes planning effortless and enjoyable.</p>
+                </div>
+                <div class="about-column">
+                    <h1>What We Offer</h1>
+                    <ul>
+                        <li><strong>Personalized Itineraries:</strong> Our platform uses AI to generate travel itineraries based on your preferences.</li>
+                        <li><strong>Smart Recommendations:</strong> Discover top attractions, dining, and accommodations with our intelligent engine.</li>
+                        <li><strong>Local Insights:</strong> Explore detailed information about your destination, including local tips and hidden gems.</li>
+                        <li><strong>Seamless Integration:</strong> Plan your trip effortlessly with our integrated services.</li>
+                    </ul>
+                </div>
+                <div class="about-column">
+                    <h1>How It Works?</h1>
+                    <p>Input your preferences, generate your itinerary, explore recommendations, and stay informed with real-time updates.</p>
+                    <h1>Join Us on This Journey</h1>
+                    <p>Whether you’re planning a weekend getaway or a grand adventure, Voyage Verse is here to guide you every step of the way. Explore new destinations, discover hidden gems, and create unforgettable memories with our innovative travel planning tool.
+                    <br>
+                    Thank you for choosing us as your travel companion. We look forward to helping you make your next trip extraordinary!</p>
+                </div>
+            </div>
+
+        </section>
+        
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="contact-left">
+                        <h1><i class="fa-solid fa-circle-user"></i>Contact Me</h1>
+                        <p><i class="fa-solid fa-envelope"></i> NAME</p>
+                        <p><i class="fa-solid fa-phone"></i> +911234567890</p>
+                        <p><i class="fa-solid fa-location-dot"></i> Trichy</p>
+                        <div class="social-icons">
+                            <a href="http://www.linkedin.com/"><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-right">
+                        <div class="question">
+                            <h1><i class="fa-solid fa-pencil"></i>Query Section</h1>
+                        </div>
+                        <form id="contact-form">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" placeholder="enter your name" required>
+                            
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" placeholder="enter your email" required>
+                            
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" placeholder="enter your query/message" required></textarea>
+                            
+                            <button type="submit">Send</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!---------------------------Footer------------------->
+        <footer>
+            <p>&copy; Voyage Verse - 2024 </p>
+        </footer>
+    </main>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission handling
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message!');
+            this.reset();
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.hero, .about, .contact').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Night Mode Toggle
+        function toggleNightMode() {
+            const body = document.body;
+            const modeIcon = document.getElementById('modeIcon');
+            
+            // Toggle the day-mode class on the body
+            body.classList.toggle('day-mode');
+            body.classList.toggle('night-mode');
+            
+            // Change the icon and the text based on the current mode
+            if (body.classList.contains('day-mode')) {
+                modeIcon.textContent = '☀️'; // Day mode icon
+            } else {
+                modeIcon.textContent = '🌙'; // Night mode icon
+            }
+        }
+
+        function openMenu() {
+            document.getElementById("sideMenu").style.width = "250px";
+        }
+
+        function closeMenu() {
+            document.getElementById("sideMenu").style.width = "0";
+        }
+
+    </script>
+</body>
+</html>

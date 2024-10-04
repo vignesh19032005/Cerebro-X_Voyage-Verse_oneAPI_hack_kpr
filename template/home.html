@@ -1,0 +1,1565 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voyage Verse</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+    /* Modal default (light mode) styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Transparent black background */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 400px;
+    border-radius: 8px;
+    text-align: center;
+    color: #333; /* Text color in light mode */
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.confirm-btn {
+    background-color: #00C1D4;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.confirm-btn:hover {
+    background-color: #00a0b2;
+}
+
+/* Modal dark mode styles */
+.modal.dark-mode .modal-content {
+    background-color: #333;  /* Dark background for modal content */
+    color: #fff;             /* White text color for dark mode */
+    border: 1px solid #555;  /* Border color for dark mode */
+}
+
+.modal.dark-mode .close-btn {
+    color: #fff;             /* White close button in dark mode */
+}
+
+.modal.dark-mode .confirm-btn {
+    background-color: #00C1D4;  /* Darker button background in dark mode */
+}
+
+.modal.dark-mode .confirm-btn:hover {
+    background-color: #00C1D4;  /* Button hover state in dark mode */
+}
+
+/* Hide chat interface by default */
+.hidden {
+    display: none;
+}
+/* Chatbot button styles */
+#chatbot-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: transparent; /* No background */
+    border: none; /* No border */
+    cursor: pointer;
+    z-index: 1000;
+    width: 80px; /* Increase width to enlarge the GIF */
+    height: 80px; /* Increase height to enlarge the GIF */
+    padding: 0; /* Remove padding */
+}
+
+/* Styling the chatbot GIF */
+.chatbot-gif {
+    width: 100%; /* GIF takes up full button size */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 50%; /* Optional: Make GIF circular */
+}
+
+/* Chat interface styles (Light Mode) */
+#chat-interface {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 300px;
+    height: 400px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    z-index: 1000;
+    overflow: hidden;
+    display: none; /* Start hidden */
+}
+
+#chat-header {
+    background-color: #00C1D4;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+}
+
+#chat-messages {
+    height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: white;
+    color: #333;
+}
+
+#chat-input {
+    display: flex;
+    padding: 10px;
+    background-color: #f4f4f4;
+}
+
+#chat-input input {
+    flex-grow: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: white;
+    color: #333;
+}
+
+#chat-input button {
+    background-color: #00C1D4;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+
+/* Chat interface styles (Dark Mode) */
+#chat-interface.dark-mode {
+    background-color: #333;
+    border: 1px solid #555;
+}
+
+#chat-header.dark-mode {
+    background-color: #555;
+    color: #fff;
+}
+
+#chat-messages.dark-mode {
+    background-color: #444;
+    color: white;
+}
+
+#chat-input.dark-mode {
+    background-color: #555;
+}
+
+#chat-input input.dark-mode {
+    background-color: #444;
+    color: white;
+    border: 1px solid #666;
+}
+
+#chat-input button.dark-mode {
+    background-color: #00C1D4;
+    color: white;
+}
+
+/* Scroll bar styling for chat messages */
+#chat-messages {
+    scrollbar-width: thin;
+    scrollbar-color: #00C1D4 #f4f4f4;
+}
+
+#chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+#chat-messages::-webkit-scrollbar-thumb {
+    background-color: #00C1D4;
+    border-radius: 10px;
+}
+
+#chat-messages::-webkit-scrollbar-track {
+    background-color: #f4f4f4;
+}
+.ai-guide-image {
+    width: 50px; /* Set the width as desired */
+    height: auto; /* Maintain aspect ratio */
+    vertical-align: middle; /* Align with text */
+}
+/* Portfolio Section */
+#portfolio {
+    padding: 50px 0;
+    background-color: #333;
+    color: #e1e1e1; /* Default text color */
+}
+
+.dark-mode #portfolio {
+    background-color: #f4f4f4; /* Background for dark mode */
+    color: #333; /* Change text color for dark mode */
+}
+
+/* Update container style */
+.container {
+    max-width: 100%; /* Use percentage for max-width */
+    margin: 0 auto; /* Center the container */
+    padding: 0 20px; /* Add some padding for small screens */
+    text-align: center; /* Center text inside the container */
+}
+
+/* Flex container for portfolio items */
+.work-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+/* Ensure consistent size for portfolio items */
+.work {
+    width: calc(33.333% - 20px); /* Three items per row with gap */
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Maintain consistent image size and aspect ratio */
+.work img {
+    width: 100%;
+    height: 250px; /* Set fixed height for consistency */
+    object-fit: cover; /* Ensures the image covers the area while maintaining aspect ratio */
+    display: block;
+    transition: transform 0.5s;
+}
+
+/* Hover effect for image */
+.work:hover img {
+    transform: scale(1.1);
+}
+
+/* Layer Overlay on Hover */
+.layer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: radial-gradient(circle, transparent 60%, rgba(0, 0, 0, 0.7) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: #fff; /* Keep this white for overlay text */
+}
+
+/* Show Overlay on Hover */
+.work:hover .layer {
+    opacity: 1;
+}
+
+/* Hover effect for the work item */
+.work:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Text alignment inside the overlay */
+.layer h2 {
+    font-size: 18px;
+    color: #fff; /* Overlay text color */
+    margin-bottom: 10px;
+}
+
+.layer a {
+    color: #ff004f; /* Link color */
+    text-decoration: none;
+    background: #fff;
+    font-size: 18px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for links */
+.layer a:hover {
+    background-color: #ff004f;
+    color: #fff;
+}
+
+/* Button Style */
+.buttn {
+    display: block;
+    margin: 50px auto;
+    width: fit-content;
+    border: 1px solid #ff004f;
+    padding: 14px 50px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #fff; /* Button text color */
+    transition: 0.5s;
+}
+
+.buttn:hover {
+    background: #ff004f;
+}
+
+.information {
+    text-align: center; /* Center the text */
+    padding-left: 20px;
+}
+
+</style>
+</head>
+<body>
+    
+    <header class="top-nav">
+        <a href="#home" class="logo">
+            <img src="logo.png" alt="Logo">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link" id="about-link">About</a></li>
+                <li><a href="index.html#contact" class="nav-link" id="contact-link">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="nav-icons">
+            <i class="icon-bell"></i>
+            <div class="profile-container">
+                <img src="default-profile.jpg" alt="User" class="profile-pic" id="profile-pic">
+                <div class="dropdown-menu" id="dropdown-menu">
+                    <div class="profile-summary">
+                        <img src="default-profile.jpg" alt="User" class="profile-pic-large" id="profile-summary-pic">
+                        <p>Name: <strong></strong></p>
+                    </div>
+                    <hr>
+                    <ul>
+                        <li id="show-profile"><a href="#"><i class="icon-eye"></i> Show Profile</a></li>
+                        <li><a href="#" id="settings-icon"><i class="icon-settings"></i> Settings</a></li>
+                        <li><a href="logout.php"><i class="icon-signout"></i> Sign out</a></li>
+                    </ul>
+                    <div id="profile-details" style="display: none;">
+                        <div class="profile-info">
+                            <button id="close-profile" class="close-btn">&times;</button>
+                            <img src="default-profile.jpg" alt="User" class="profile-pic-large" id="profile-details-pic">
+                            <div class="user-details">
+                                <p>Name: <strong></strong></p>
+                                <p>Email: <strong></strong></p>
+                                <p>Phone: <strong></strong></p>
+                            </div>
+                        </div>
+                        <label for="upload-photo" class="upload-btn">Upload Photo</label>
+                        <input type="file" id="upload-photo" accept="image/*" style="display: none;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="night-mode-toggle" onclick="toggleNightMode()">
+                    <span id="modeIcon">🌙</span>
+                </button>
+    </header>
+    <div class="search-bar">
+        <h2>Search for Your Travel Destination</h2>
+        <form id="search-form">
+            <div class="form-group">
+                <h3>Destination Name</h3>
+                <select id="destination" name="destination" required onchange="showSelectedDistrict()">
+                    <option value="" disabled selected>Select a district</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <h3>Start Date</h3>
+                <input type="date" id="start-date" name="start-date" required>
+            </div>
+            
+            <div class="form-group">
+                <h3>End Date</h3>
+                <input type="date" id="end-date" name="end-date" required>
+            </div>
+            
+            <div class="form-group">
+                <h3>Minimum Budget</h3>
+                <select id="min-budget" name="min-budget" required>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                    <option value="Luxury">Luxury</option>
+                </select>
+            </div>
+    
+            <div class="form-group">
+                <h3>Maximum Budget</h3>
+                <select id="max-budget" name="max-budget" required>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                    <option value="Luxury">Luxury</option>
+                </select>
+            </div>
+            
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <!-- Modal structure -->
+    <div id="popupModal" class="modal">
+        <div class="modal-content">
+            <span id="modalCloseBtn" class="close-btn">&times;</span>
+            <h2>Your Travel Details</h2>
+            <p id="destination-details"></p>
+            <p id="date-details"></p>
+            <p id="days-details"></p>
+            <p id="budget-details"></p>
+            <p>Enjoy your travel!</p>
+            <button id="confirmBtn" class="confirm-btn">Confirm</button>
+        </div>
+    </div>
+
+    <div class="why-choose-us">
+        <h2>Why choose us?</h2>
+        <div class="features-container">
+            <div class="feature">
+                <h3>Personalized Itineraries</h3>
+                <p>Receive tailored itineraries that align with your preferences, budget, and travel style, ensuring a unique and enjoyable experience.</p>
+            </div>
+            <div class="feature">
+                <h3>Budget-Friendly Planning</h3>
+                <p>Whether you're saving or splurging, Voyage Verse adjusts recommendations to fit your financial plan, making travel accessible and stress-free.</p>
+            </div>
+            <div class="feature">
+                <h3>Interactive Maps</h3>
+                <p>Visualize your entire journey with Leaflet-integrated maps, guiding you through the best routes, attractions, and dining spots.</p>
+            </div>
+            <div class="feature">
+                <h3>Expert Travel Tips</h3>
+                <p>Benefit from curated travel tips and advice, ensuring you make the most of your destination, discovering hidden gems and must-see spots.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="portfolio">
+        <div class="container">
+            <h1 class="information">Top Six Destinations</h1>
+            <div class="work-list">
+                <div class="work">
+                    <img src="amritsar.jpg">
+                    <div class="layer">
+                        <h2><strong>Amristar</strong></h2>
+                        <a href="amristar.html"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="andhaman.jpg">
+                    <div class="layer">
+                        <h2><strong>Andhaman Islands</strong></h2>
+                        <a href="andamanislands.html"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="tajmahal.jpg">
+                    <div class="layer">
+                        <h2><strong>Agra</strong></h2>
+                        <a href="agra.html"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="goa.jpg">
+                    <div class="layer">
+                        <h2><strong>Goa</strong></h2>
+                        <a href="goa.html"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="pondicherry.jpg">
+                    <div class="layer">
+                        <h2><strong>Pondicherry</strong></h2>
+                        <a href="pondicherry.html"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="1-kullu.jpg">
+                    <div class="layer">
+                        <h2><strong>Kullu</strong></h2>
+                        <a href="kullu.html"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+    
+    <section class="testimonials">
+        <h2>What They're Saying</h2>
+        <p>Rated 4.8 out of 5 at TrustPilot</p>
+        
+        <div class="testimonial-row">
+            <div class="testimonial-card">
+                <div class="rating">
+                    <span>Edson</span>
+                    <span>5.0 ★★★★★</span>
+                </div>
+                <p class="review-text">"Voyage Verse turned my dream trip to Bali into a reality. Their personalized itinerary suggestions and insider tips made my experience unforgettable.
+                     I felt like a local, exploring hidden gems and experiencing authentic Balinese culture. Highly recommended!"</p>
+                <p class="reviewer">OCT 01, 2024</p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="rating">
+                    <span>Amer Garibović</span>
+                    <span>5.0 ★★★★★</span>
+                </div>
+                <p class="review-text">"I was initially overwhelmed by the options for my family trip to Europe. Voyage Verse simplified the process, providing tailored recommendations based on our interests and budget. The customer support was exceptional, 
+                    always available to answer our questions and provide guidance. Our trip was a huge success!"                </p>
+                <p class="reviewer">OCT 02, 2024</p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="rating">
+                    <span>Waqas Ahmed</span>
+                    <span>5.0 ★★★★★</span>
+                </div>
+                <p class="review-text">"I've used Voyage Verse for multiple trips now, and I'm always impressed. Their curated selection of unique experiences and accommodations makes each journey special.
+                     The website is easy to navigate, and the booking process is seamless. I'll definitely be using them again for my next adventure!"</p>
+                <p class="reviewer">OCT 05, 2024</p>
+            </div>
+        </div>
+    </section>
+
+<!-- Chat bot button with GIF -->
+<button id="chatbot-button" class="chatbot-icon">
+    <img src="thinking.gif" alt="Chatbot Icon" class="chatbot-gif">
+</button>
+
+<!-- Chat interface -->
+<div id="chat-interface" class="hidden">
+    <div id="chat-header">Chatbot</div>
+    <div id="chat-messages"></div>
+    <div id="chat-input">
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button id="send-button" onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+    <!---------------------------Footer------------------->
+    <footer>
+        <p>&copy; Voyage Verse-2024</p>
+    </footer>
+
+    <!---------------------------Script------------------->
+    <script>
+
+document.addEventListener('DOMContentLoaded', function () {
+    const chatButton = document.getElementById('chatbot-button');
+    const chatInterface = document.getElementById('chat-interface');
+    const userInput = document.getElementById('user-input');
+    const chatMessages = document.getElementById('chat-messages');
+    const sendButton = document.getElementById('send-button');
+
+    // Check if chat button and chat interface exist
+    if (!chatButton || !chatInterface) {
+        console.error('Chatbot button or interface not found.');
+        return;
+    }
+
+    // Chat button click event - toggle chat interface visibility
+    chatButton.addEventListener('click', () => {
+        if (chatInterface.style.display === 'none' || chatInterface.style.display === '') {
+            chatInterface.style.display = 'block';
+        } else {
+            chatInterface.style.display = 'none';
+        }
+    });
+
+    // Send button click event - send the user's message
+    sendButton.addEventListener('click', sendMessage);
+
+    // Enter key press event for input field
+    userInput.addEventListener('keypress', function (event) {
+        if (event.key === 'Enter') {
+            sendMessage();
+        }
+    });
+
+    // Function to send a message
+    function sendMessage() {
+        const message = userInput.value.trim();
+        if (message) {
+            addMessage('You', message);
+            // Simulate an AI response
+            setTimeout(() => {
+                addMessage('AI Guide', 'Thank you for your message. How can I assist you today?');
+            }, 1000);
+            userInput.value = ''; // Clear the input field after sending
+        }
+    }
+
+    // Function to add a message to the chat
+    function addMessage(sender, message) {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message');
+
+        if (sender === 'AI Guide') {
+            // Replace the text with an image for AI Guide
+            const img = document.createElement('img');
+            img.src = 'chat1.png'; // Path to your AI Guide image
+            img.alt = 'AI Guide';
+            img.classList.add('ai-guide-image'); // Add a class for styling (optional)
+            messageElement.appendChild(img);
+        } else {
+            messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+        }
+        
+        chatMessages.appendChild(messageElement);
+        chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to the bottom
+    }
+
+    // Initialize chat with a welcome message
+    addMessage('AI Guide', 'Hello! How can I help you today?');
+});
+
+    // Function to toggle between light and dark mode
+    function toggleDarkMode() {
+        const chatInterface = document.getElementById('chat-interface');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const chatButton = document.getElementById('chatbot-button');
+
+        // Toggle dark mode for the chat interface and chat input
+        chatInterface.classList.toggle('dark-mode');
+        chatMessages.classList.toggle('dark-mode');
+        chatInput.classList.toggle('dark-mode');
+        chatButton.classList.toggle('dark-mode');
+    }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        // Date logic
+    var today = new Date().toISOString().split('T')[0];
+    var tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    var tomorrowDate = tomorrow.toISOString().split('T')[0];
+    document.getElementById('start-date').setAttribute('min', today);
+    document.getElementById('end-date').setAttribute('min', tomorrowDate);
+    document.getElementById('end-date').value = tomorrowDate;
+
+    document.getElementById('start-date').addEventListener('change', function() {
+        var startDate = this.value;
+        if (startDate) {
+            document.getElementById('end-date').setAttribute('min', startDate);
+            var endDate = document.getElementById('end-date').value;
+            if (endDate && endDate < startDate) {
+                document.getElementById('end-date').value = startDate;
+            }
+        }
+    });
+
+    const districts = {
+        "Andaman and Nicobar Islands": [
+    "North and Middle Andaman",
+    "South Andaman",
+    "Nicobar"
+  ],
+  "Andhra Pradesh": [
+    "Anantapur",
+    "Chittoor",
+    "East Godavari",
+    "Guntur",
+    "Krishna",
+    "Kurnool",
+    "Prakasam",
+    "Srikakulam",
+    "Sri Potti Sriramulu Nellore",
+    "Visakhapatnam",
+    "Vizianagaram",
+    "West Godavari",
+    "YSR Kadapa"
+  ],
+  "Arunachal Pradesh": [
+    "Anjaw",
+    "Changlang",
+    "Dibang Valley",
+    "East Kameng",
+    "East Siang",
+    "Kurung Kumey",
+    "Lohit",
+    "Longding",
+    "Namsai",
+    "Papum Pare",
+    "Tawang",
+    "Tirap",
+    "Upper Siang",
+    "Upper Subansiri",
+    "West Kameng",
+    "West Siang"
+  ],
+  "Assam": [
+    "Baksa",
+    "Barpeta",
+    "Bishnupur",
+    "Darrang",
+    "Dhemaji",
+    "Dibrugarh",
+    "Goalpara",
+    "Golaghat",
+    "Hailakandi",
+    "Jorhat",
+    "Karimganj",
+    "Kokrajhar",
+    "Lakhimpur",
+    "Morigaon",
+    "Nagaon",
+    "Nalbari",
+    "Sivasagar",
+    "Sonitpur",
+    "Tinsukia",
+    "Udalguri",
+    "West Karbi Anglong"
+  ],
+  "Bihar": [
+    "Araria",
+    "Arwal",
+    "Aurangabad",
+    "Banka",
+    "Begusarai",
+    "Bhagalpur",
+    "Buxar",
+    "Darbhanga",
+    "East Champaran",
+    "Gaya",
+    "Gopalganj",
+    "Jamui",
+    "Jehanabad",
+    "Kaimur",
+    "Katihar",
+    "Khagaria",
+    "Kishanganj",
+    "Lakhisarai",
+    "Madhubani",
+    "Munger",
+    "Muzaffarpur",
+    "Nalanda",
+    "Nawada",
+    "Patna",
+    "Purnia",
+    "Rohtas",
+    "Saharsa",
+    "Samastipur",
+    "Saran",
+    "Sheikhpura",
+    "Sheohar",
+    "Sitamarhi",
+    "Siwan",
+    "Supaul",
+    "Vaishali",
+    "West Champaran"
+  ],
+  "Chandigarh": [
+    "Chandigarh"
+  ],
+  "Chhattisgarh": [
+    "Balod",
+    "Baloda Bazar",
+    "Bastar",
+    "Bemetara",
+    "Dantewada",
+    "Dhamtari",
+    "Durg",
+    "Gariaband",
+    "Janjgir-Champa",
+    "Jashpur",
+    "Kabirdham",
+    "Kanker",
+    "Korba",
+    "Korea",
+    "Mahasamund",
+    "Manendragarh",
+    "Narayanpur",
+    "Raigarh",
+    "Raipur",
+    "Rajnandgaon",
+    "Sukma",
+    "Surajpur",
+    "Surguja"
+  ],
+  "Dadra and Nagar Haveli and Daman and Diu": [
+    "Dadra and Nagar Haveli",
+    "Daman",
+    "Diu"
+  ],
+  "Delhi": [
+    "Central Delhi",
+    "East Delhi",
+    "North Delhi",
+    "North East Delhi",
+    "North West Delhi",
+    "South Delhi",
+    "South East Delhi",
+    "South West Delhi",
+    "West Delhi"
+  ],
+  "Goa": [
+    "North Goa",
+    "South Goa"
+  ],
+  "Gujarat": [
+    "Ahmedabad",
+    "Amreli",
+    "Anand",
+    "Banaskantha",
+    "Bharuch",
+    "Bhavnagar",
+    "Dahod",
+    "Dangs",
+    "Gandhinagar",
+    "Kutch",
+    "Kheda",
+    "Mahisagar",
+    "Mehsana",
+    "Narmada",
+    "Navsari",
+    "Panchmahal",
+    "Patan",
+    "Porbandar",
+    "Rajkot",
+    "Sabarkantha",
+    "Surat",
+    "Surendranagar",
+    "Vadodara",
+    "Valsad"
+  ],
+  "Haryana": [
+    "Ambala",
+    "Bhiwani",
+    "Charkhi Dadri",
+    "Faridabad",
+    "Fatehabad",
+    "Gurugram",
+    "Hisar",
+    "Jhajjar",
+    "Jind",
+    "Kaithal",
+    "Karnal",
+    "Mahendragarh",
+    "Nuh",
+    "Panchkula",
+    "Panipat",
+    "Rewari",
+    "Rohtak",
+    "Sirsa",
+    "Sonipat",
+    "Yamunanagar"
+  ],
+  "Himachal Pradesh": [
+    "Bilaspur",
+    "Chamba",
+    "Hamirpur",
+    "Kangra",
+    "Kinnaur",
+    "Kullu",
+    "Lahaul and Spiti",
+    "Mandi",
+    "Shimla",
+    "Sirmaur",
+    "Solan",
+    "Una"
+  ],
+  "Jammu and Kashmir": [
+    "Doda",
+    "Ganderbal",
+    "Jammu",
+    "Kathua",
+    "Kishtwar",
+    "Poonch",
+    "Rajouri",
+    "Ramban",
+    "Reasi",
+    "Samba",
+    "Shopian",
+    "Srinagar",
+    "Udhampur"
+  ],
+  "Jharkhand": [
+    "Bokaro",
+    "Chatra",
+    "Deoghar",
+    "Dhanbad",
+    "Dumka",
+    "East Singhbhum",
+    "Garhwa",
+    "Giridih",
+    "Godda",
+    "Gumla",
+    "Hazaribagh",
+    "Jamtara",
+    "Khunti",
+    "Koderma",
+    "Latehar",
+    "Lohardaga",
+    "Pakur",
+    "Palamu",
+    "Ranchi",
+    "Sahibganj",
+    "Saraikela Kharsawan",
+    "Simdega",
+    "West Singhbhum"
+  ],
+  "Karnataka": [
+    "Bagalkot",
+    "Bangalore Rural",
+    "Bangalore Urban",
+    "Belgaum",
+    "Bellary",
+    "Bidar",
+    "Chamarajanagar",
+    "Chikkaballapur",
+    "Chikkamagaluru",
+    "Chitradurga",
+    "Dakshina Kannada",
+    "Davanagere",
+    "Dharwad",
+    "Gadag",
+    "Gulbarga",
+    "Hassan",
+    "Haveri",
+    "Kodagu",
+    "Kolar",
+    "Koppal",
+    "Mandya",
+    "Mysore",
+    "Raichur",
+    "Ramanagara",
+    "Shimoga",
+    "Tumkur",
+    "Udupi",
+    "Uttara Kannada",
+    "Vijayapura",
+    "Yadgir"
+  ],
+  "Kerala": [
+    "Alappuzha",
+    "Ernakulam",
+    "Idukki",
+    "Kasaragod",
+    "Kollam",
+    "Kottayam",
+    "Kozhikode",
+    "Malappuram",
+    "Palakkad",
+    "Pathanamthitta",
+    "Thiruvananthapuram",
+    "Thrissur",
+    "Wayanad"
+  ],
+  "Ladakh": [
+    "Kargil",
+    "Leh"
+  ],
+  "Lakshadweep": [
+    "Lakshadweep"
+  ],
+  "Madhya Pradesh": [
+    "Agar Malwa",
+    "Alirajpur",
+    "Anuppur",
+    "Ashoknagar",
+    "Balaghat",
+    "Barwani",
+    "Betul",
+    "Bhind",
+    "Bhopal",
+    "Burhanpur",
+    "Chhatarpur",
+    "Chhindwara",
+    "Damoh",
+    "Datia",
+    "Dewas",
+    "Dhar",
+    "Dindori",
+    "Guna",
+    "Gwalior",
+    "Harda",
+    "Hoshangabad",
+    "Indore",
+    "Jabalpur",
+    "Jhabua",
+    "Katni",
+    "Khandwa",
+    "Khargone",
+    "Mandla",
+    "Mandsaur",
+    "Morena",
+    "Narsinghpur",
+    "Neemuch",
+    "Niwari",
+    "Panna",
+    "Raisen",
+    "Rajgarh",
+    "Ratlam",
+    "Rewa",
+    "Sagar",
+    "Satna",
+    "Sehore",
+    "Seoni",
+    "Shahdol",
+    "Shajapur",
+    "Sheopur",
+    "Shivpuri",
+    "Sidhi",
+    "Singrauli",
+    "Tikamgarh",
+    "Ujjain",
+    "Umaria",
+    "Vidisha"
+  ],
+  "Maharashtra": [
+    "Ahmednagar",
+    "Akola",
+    "Amravati",
+    "Aurangabad",
+    "Beed",
+    "Bhandara",
+    "Buldhana",
+    "Chandrapur",
+    "Dhule",
+    "Gadchiroli",
+    "Gondia",
+    "Hingoli",
+    "Jalna",
+    "Jalgaon",
+    "Kolhapur",
+    "Latur",
+    "Mumbai",
+    "Nagpur",
+    "Nanded",
+    "Nasik",
+    "Osmanabad",
+    "Parbhani",
+    "Pune",
+    "Raigad",
+    "Ratnagiri",
+    "Satara",
+    "Sindhudurg",
+    "Solapur",
+    "Thane",
+    "Wardha",
+    "Washim",
+    "Yavatmal"
+  ],
+  "Manipur": [
+    "Bishnupur",
+    "Chandel",
+    "Churachandpur",
+    "Imphal East",
+    "Imphal West",
+    "Jiribam",
+    "Kakching",
+    "Kamjong",
+    "Kangpokpi",
+    "Noney",
+    "Senapati",
+    "Tamenglong",
+    "Tengnoupal",
+    "Thoubal",
+    "Ukhrul"
+  ],
+  "Meghalaya": [
+    "East Garo Hills",
+    "East Khasi Hills",
+    "North Garo Hills",
+    "Ri Bhoi",
+    "South Garo Hills",
+    "South West Khasi Hills",
+    "West Garo Hills",
+    "West Khasi Hills"
+  ],
+  "Mizoram": [
+    "Aizawl",
+    "Champhai",
+    "Hnahthial",
+    "Lunglei",
+    "Mamit",
+    "Saiha",
+    "Saitual",
+    "Serchhip"
+  ],
+  "Nagaland": [
+    "Dimapur",
+    "Kiphire",
+    "Kohima",
+    "Longleng",
+    "Mokokchung",
+    "Mon",
+    "Phek",
+    "Tuensang",
+    "Wokha",
+    "Zunheboto"
+  ],
+  "Odisha": [
+    "Angul",
+    "Baleswar",
+    "Bargarh",
+    "Bhadrak",
+    "Balangir",
+    "Boudh",
+    "Cuttack",
+    "Deogarh",
+    "Dhenkanal",
+    "Ganjam",
+    "Gajapati",
+    "Kandhamal",
+    "Kendrapara",
+    "Kendujhar",
+    "Khurda",
+    "Nabarangpur",
+    "Nayagarh",
+    "Nuapada",
+    "Puri",
+    "Rayagada",
+    "Sambalpur",
+    "Sonepur",
+    "Jagatsinghpur",
+    "Jajpur",
+    "Bhawanipatna"
+  ],
+  "Puducherry": [
+    "Karaikal",
+    "Mahe",
+    "Puducherry",
+    "Yanam"
+  ],
+  "Punjab": [
+    "Amritsar",
+    "Barnala",
+    "Bathinda",
+    "Fatehgarh Sahib",
+    "Fazilka",
+    "Gurdaspur",
+    "Hoshiarpur",
+    "Jalandhar",
+    "Kapurthala",
+    "Ludhiana",
+    "Mansa",
+    "Moga",
+    "Patiala",
+    "Roopnagar",
+    "Sangrur",
+    "SAS Nagar",
+    "Shaheed Bhagat Singh Nagar",
+    "Tarn Taran"
+  ],
+  "Rajasthan": [
+    "Ajmer",
+    "Alwar",
+    "Banswara",
+    "Baran",
+    "Barmer",
+    "Bikaner",
+    "Bundi",
+    "Chittorgarh",
+    "Churu",
+    "Dausa",
+    "Dungarpur",
+    "Hanumangarh",
+    "Jaipur",
+    "Jaisalmer",
+    "Jalore",
+    "Jhunjhunu",
+    "Jodhpur",
+    "Kota",
+    "Nagaur",
+    "Pali",
+    "Rajsamand",
+    "Sawai Madhopur",
+    "Sikar",
+    "Tonk",
+    "Udaipur"
+  ],
+  "Sikkim": [
+    "East Sikkim",
+    "North Sikkim",
+    "South Sikkim",
+    "West Sikkim"
+  ],
+  "Tamil Nadu": [
+    "Ariyalur",
+    "Chengalpattu",
+    "Chennai",
+    "Coimbatore",
+    "Cuddalore",
+    "Dharmapuri",
+    "Dindigul",
+    "Erode",
+    "Kanchipuram",
+    "Kanyakumari",
+    "Karur",
+    "Krishnagiri",
+    "Madurai",
+    "Nagapattinam",
+    "Namakkal",
+    "Perambalur",
+    "Pudukkottai",
+    "Ramanathapuram",
+    "Ranipet",
+    "Salem",
+    "Sivaganga",
+    "Thanjavur",
+    "Theni",
+    "Thoothukudi",
+    "Tiruchirappalli",
+    "Tirunelveli",
+    "Tiruppur",
+    "Vellore",
+    "Villupuram",
+    "Virudhunagar"
+  ],
+  "Telangana": [
+    "Adilabad",
+    "Hyderabad",
+    "Jagtial",
+    "Jangaon",
+    "Jayashankar Bhoopalpally",
+    "Jogulamba Gadwal",
+    "Kamareddy",
+    "Karimnagar",
+    "Khammam",
+    "Mahabubnagar",
+    "Mancherial",
+    "Medak",
+    "Medchal-Malkajgiri",
+    "Nalgonda",
+    "Nizamabad",
+    "Peddapalli",
+    "Rajanna Sircilla",
+    "Rangareddy",
+    "Sangareddy",
+    "Siddipet",
+    "Suryapet",
+    "Vikarabad",
+    "Wanaparthy",
+    "Warangal Rural",
+    "Warangal Urban",
+    "Yadadri Bhuvanagiri"
+  ],
+  "Tripura": [
+    "Dhalai",
+    "Gomati",
+    "Khowai",
+    "North Tripura",
+    "Sepahijala",
+    "South Tripura",
+    "Unakoti",
+    "West Tripura"
+  ],
+  "Uttar Pradesh": [
+    "Agra",
+    "Aligarh",
+    "Ambedkar Nagar",
+    "Amethi",
+    "Amroha",
+    "Auraiya",
+    "Azamgarh",
+    "Badaun",
+    "Baghpat",
+    "Bahraich",
+    "Ballia",
+    "Balrampur",
+    "Banda",
+    "Barabanki",
+    "Bareilly",
+    "Bijnor",
+    "Budaun",
+    "Bulandshahr",
+    "Chandauli",
+    "Chitrakoot",
+    "Deoria",
+    "Etah",
+    "Etawah",
+    "Faizabad",
+    "Farrukhabad",
+    "Fatehpur",
+    "Firozabad",
+    "Gautam Buddha Nagar",
+    "Ghazipur",
+    "Gonda",
+    "Gorakhpur",
+    "Hamirpur",
+    "Hapurs",
+    "Hardoi",
+    "Hathras",
+    "Jalaun",
+    "Jaunpur",
+    "Jhansi",
+    "Kannauj",
+    "Kanpur Dehat",
+    "Kanpur Nagar",
+    "Kasganj",
+    "Kaushambi",
+    "Kushinagar",
+    "Lakhimpur Kheri",
+    "Lalitpur",
+    "Maharajganj",
+    "Mahoba",
+    "Mainpuri",
+    "Mathura",
+    "Mau",
+    "Meerut",
+    "Mirzapur",
+    "Moradabad",
+    "Muzaffarnagar",
+    "Panchsheel Nagar",
+    "Pilibhit",
+    "Pratapgarh",
+    "Raebareli",
+    "Rampur",
+    "Saharanpur",
+    "Sambhal",
+    "Sant Ravidas Nagar",
+    "Shahjahanpur",
+    "Shrawasti",
+    "Siddharthnagar",
+    "Sitapur",
+    "Sonbhadra",
+    "Sultanpur",
+    "Unnao",
+    "Varanasi",
+    "Shamli",
+    "Hapur",
+    "Ayodhya",
+    "Baghpat"
+  ],
+  "Uttarakhand": [
+    "Almora",
+    "Bageshwar",
+    "Chamoli",
+    "Champawat",
+    "Dehradun",
+    "Haridwar",
+    "Nainital",
+    "Pauri Garhwal",
+    "Pithoragarh",
+    "Rudraprayag",
+    "Tehri Garhwal",
+    "Udham Singh Nagar",
+    "Uttarkashi"
+  ],
+  "West Bengal": [
+    "Alipurduar",
+    "Bankura",
+    "Birbhum",
+    "Burdwan",
+    "Cooch Behar",
+    "Dakshin Dinajpur",
+    "Darjeeling",
+    "Hooghly",
+    "Howrah",
+    "Jalpaiguri",
+    "Jhargram",
+    "Malda",
+    "Medinipur",
+    "Murshidabad",
+    "Nadia",
+    "North 24 Parganas",
+    "Purulia",
+    "South 24 Parganas",
+    "Uttar Dinajpur",
+    "Kalimpong",
+    "Paschim Medinipur",
+    "Purba Medinipur"
+  ]
+};
+
+window.onload = function () {
+    const dropdown = document.getElementById("destination");
+
+    for (const state in districts) {
+        if (districts.hasOwnProperty(state)) {
+            const optgroup = document.createElement("optgroup");
+            optgroup.label = state;
+
+            districts[state].forEach(district => {
+                const option = document.createElement("option");
+                option.value = district;
+                option.textContent = district;
+                optgroup.appendChild(option);
+            });
+
+            dropdown.appendChild(optgroup);
+        }
+    }
+};
+
+// Modal and form submission logic
+const modal = document.getElementById("popupModal");
+const closeBtn = document.getElementById("modalCloseBtn");
+const confirmBtn = document.getElementById("confirmBtn");
+
+closeBtn.onclick = function() {
+    modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+document.getElementById("search-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const destination = document.getElementById("destination").value;
+    const startDate = new Date(document.getElementById("start-date").value);
+    const endDate = new Date(document.getElementById("end-date").value);
+    const minBudget = document.getElementById("min-budget").value;
+    const maxBudget = document.getElementById("max-budget").value;
+
+    // Calculate number of days
+    const timeDiff = Math.abs(endDate - startDate);
+    const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24)) + 1;
+
+    // Update modal content
+    document.getElementById("destination-details").textContent = `Destination: ${destination}`;
+    document.getElementById("date-details").textContent = `From: ${startDate.toISOString().split('T')[0]} To: ${endDate.toISOString().split('T')[0]}`;
+    document.getElementById("days-details").textContent = `Number of Days: ${daysDiff}`;
+    document.getElementById("budget-details").textContent = `Budget Range: ${minBudget} - ${maxBudget}`;
+
+    // Show the modal
+    modal.style.display = "block";
+});
+
+confirmBtn.onclick = function() {
+    const destination = document.getElementById("destination").value;
+    const startDate = document.getElementById("start-date").value;
+    const endDate = document.getElementById("end-date").value;
+    const minBudget = document.getElementById("min-budget").value;
+    const maxBudget = document.getElementById("max-budget").value;
+
+    // Calculate number of days
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const timeDiff = Math.abs(end - start);
+    const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24)) + 1;
+
+    // Build the URL with query parameters
+    const url = `search.html?destination=${encodeURIComponent(destination)}&startDate=${encodeURIComponent(startDate)}&endDate=${encodeURIComponent(endDate)}&budget=${encodeURIComponent(minBudget)}-${encodeURIComponent(maxBudget)}&days=${daysDiff}`;
+    
+    // Redirect to search.html with the query string
+    window.location.href = url;
+}
+
+
+        document.getElementById('profile-pic').addEventListener('click', function() {
+            const dropdownMenu = document.getElementById('dropdown-menu');
+            const profileDetails = document.getElementById('profile-details');
+            const settingsMenu = document.getElementById('settings-menu');
+
+            if (dropdownMenu.style.display === 'block') {
+                dropdownMenu.style.display = 'none';
+                profileDetails.style.display = 'none';
+                settingsMenu.style.display = 'none';
+            } else {
+                dropdownMenu.style.display = 'block';
+            }
+        });
+
+        document.getElementById('show-profile').addEventListener('click', function(event) {
+            event.stopPropagation();
+            const profileDetails = document.getElementById('profile-details');
+            profileDetails.style.display = profileDetails.style.display === 'block' ? 'none' : 'block';
+        });
+
+        document.getElementById('close-profile').addEventListener('click', function() {
+            const profileDetails = document.getElementById('profile-details');
+            profileDetails.style.display = 'none';
+        });
+
+        document.getElementById('upload-photo').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profile-pic').src = e.target.result;
+                    document.getElementById('profile-summary-pic').src = e.target.result;
+                    document.getElementById('profile-details-pic').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.querySelector('#settings-icon').addEventListener('click', function() {
+            const settingsMenu = document.getElementById('settings-menu');
+            settingsMenu.style.display = settingsMenu.style.display === 'block' ? 'none' : 'block';
+        });
+
+        document.getElementById('close-settings').addEventListener('click', function() {
+            const settingsMenu = document.getElementById('settings-menu');
+            settingsMenu.style.display = 'none';
+        });
+
+        window.onclick = function(event) {
+            const dropdownMenu = document.getElementById('dropdown-menu');
+            const profileDetails = document.getElementById('profile-details');
+            const settingsMenu = document.getElementById('settings-menu');
+            
+            if (!event.target.matches('#profile-pic') && !event.target.closest('.dropdown-menu')) {
+                dropdownMenu.style.display = 'none';
+                profileDetails.style.display = 'none';
+                settingsMenu.style.display = 'none';
+            }
+        };
+
+        function toggleNightMode() {
+            const body = document.body;
+            const modeIcon = document.getElementById('modeIcon');
+            const modal = document.getElementById('popupModal');
+            
+            // Toggle the dark-mode class on the body and modal
+            body.classList.toggle('dark-mode');
+            modal.classList.toggle('dark-mode');
+
+            // Change the icon and the text based on the current mode
+            if (body.classList.contains('dark-mode')) {
+                modeIcon.textContent = '☀️'; // Day mode icon
+            } else {
+                modeIcon.textContent = '🌙'; // Night mode icon
+            }
+        }
+
+    </script>
+</body>
+</html>
+

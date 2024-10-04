@@ -1,0 +1,469 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+    background: url('Video.mp4') no-repeat center center/cover;
+}
+
+body.day-mode {
+    background-color: #ffffff; /* Background for day mode */
+}
+.back-video{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.day-mode header {
+    background-color: #333;
+    color: #333;
+}
+
+.logo {
+    flex: 1;
+}
+
+.logo img {
+    max-height: 50px;
+    transition: max-height 0.3s ease;
+}
+
+/* Smaller logo size on scroll */
+header.scrolled .logo img {
+    max-height: 30px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 2;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: transform 0.5s, color 0.3s ease;
+}
+
+body.day-mode nav ul li a {
+    color: #fff;
+}
+
+nav ul li a:hover {
+    color: #6E2AF5;
+    transform: translateY(-5px);
+}
+
+body.day-mode nav ul li a:hover {
+    color: #6E2AF5;
+}
+
+/* Sections */
+section {
+    padding: 30px 10px; /* Reduce the padding from 50px to 30px */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    text-align: justify;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hero Section */
+.hero {
+    
+    color: #fff;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+body.day-mode .hero {
+    color: #000; /* Hero text color for day mode */
+}
+
+.get-button {
+    margin-top: 20px; /* Optional: Add some margin if needed */
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.day-mode .get-button {
+    background-color: #f1f1f1; /* Button background for day mode */
+    color: #333; /* Button text color for day mode */
+}
+
+.get-button:hover {
+    background-color: #555;
+}
+
+.get-button:active {
+    background-color: #111;
+}
+
+.get-button .button-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.get-button .button-content i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.get-button:hover .button-content i {
+    transform: translateX(5px);
+}
+
+.hero h1 {
+    font-size: 50px;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 20px;
+}
+
+/* About Section Columns */
+/* Default (Night Mode) */
+body {
+    background-color: #333;
+    color: #E1D14E;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* About Section in Night Mode */
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 20px;
+}
+
+.about-column {
+    background-color: #444;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    flex: 1;
+    min-width: 280px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #fff;
+}
+
+.about-column:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+}
+
+.about-column h1 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.about-column p, .about-column ul {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.about-column ul {
+    padding-left: 20px;
+}
+
+.about-column ul li {
+    margin-bottom: 10px;
+}
+
+/* Day Mode Styles */
+body.day-mode {
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+body.day-mode .about-column {
+    background-color: #ffffff;
+    color: #333;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+body.day-mode .about-column:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+
+/* Contact Section */
+.contact {
+    background-color: #333; /* Dark mode default */
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+    
+}
+
+body.day-mode .contact {
+    background-color: #fff; /* White background for day mode */
+    color: #333; /* Dark text for day mode */
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.contact-left,
+.contact-right {
+    flex-basis: 40%;
+}
+
+.contact-left {
+    text-align: left;
+}
+
+.contact-left h1 {
+    font-size: 24px;
+    color: #fff; /* Dark mode default heading color */
+}
+
+body.day-mode .contact-left h1 {
+    color: #333; /* Heading color for day mode */
+}
+
+.contact-left p {
+    margin-top: 30px;
+    font-size: 18px;
+    color: #bbb; /* Dark mode paragraph color */
+}
+
+body.day-mode .contact-left p {
+    color: #666; /* Paragraph color for day mode */
+}
+
+.social-icons a {
+    color: #bbb; /* Social icon color for dark mode */
+    font-size: 24px;
+    margin-right: 20px;
+    transition: color 0.3s ease;
+}
+
+body.day-mode .social-icons a {
+    color: #333; /* Social icons color for day mode */
+}
+
+.social-icons a:hover {
+    color: #6E2AF5;
+}
+
+body.day-mode .social-icons a:hover {
+    color: #6E2AF5; /* Ensure hover color for day mode */
+}
+
+.contact-right {
+    background-color: #444; /* Dark mode background */
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.7);
+}
+
+body.day-mode .contact-right {
+    background-color: #f8f8f8; /* Background for day mode */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-right h1 {
+    font-size: 24px;
+    color: #fff; /* Dark mode heading color */
+    margin-bottom: 20px;
+}
+
+body.day-mode .contact-right h1 {
+    color: #333; /* Heading color for day mode */
+}
+
+.contact-right form label {
+    font-size: 16px;
+    color: #fff; /* Dark mode label color */
+    display: block;
+    margin-top: 20px;
+}
+
+body.day-mode .contact-right form label {
+    color: #333; /* Label color for day mode */
+}
+
+.contact-right form input,
+.contact-right form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #666; /* Dark mode border */
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #555; /* Dark mode input background */
+    color: #eee; /* Dark mode input text */
+}
+
+body.day-mode .contact-right form input,
+body.day-mode .contact-right form textarea {
+    background-color: #f8f8f8; /* Input background for day mode */
+    color: #333; /* Input text color for day mode */
+    border: 1px solid #ccc; /* Input border for day mode */
+}
+
+.contact-right form textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.contact-right form button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #fff; /* Dark mode button background */
+    color: #333; /* Dark mode button text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+body.day-mode .contact-right form button {
+    background-color: #f1f1f1; /* Button background for day mode */
+    color: #333; /* Button text color for day mode */
+}
+
+.contact-right form button:hover {
+    background-color: #555;
+}
+
+.contact-right form button:active {
+    background-color: #111;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    width: 100%;
+    box-sizing: border-box; 
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.day-mode footer {
+    background-color: #333; /* Footer background for day mode */
+    color: #fff; /* Footer text color for day mode */
+}
+/* Night Mode Toggle Button */
+.night-mode-toggle {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: background 0.3s;
+    margin-left: 20px; /* Adjust spacing between the toggle and other nav items */
+}
+
+.night-mode-toggle:hover {
+    background: #0056b3;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    .hero {
+        padding: 50px 20px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .contact-left,
+    .contact-right {
+        flex-basis: 100%;
+    }
+
+    .container {
+        width: 90%;
+    }
+}
+
+

@@ -1,0 +1,364 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: background 0.3s, color 0.3s;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.day-mode header {
+    background-color: #f1f1f1; /* Header background for day mode */
+    color: #333; /* Header text color for day mode */
+}
+
+.logo {
+    flex: 1; /* Ensure the logo takes up space on the left */
+}
+
+.logo img {
+    max-height: 50px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Align nav content to the right */
+    flex: 2; /* Allow nav to take up remaining space */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: transform 0.5s, color 0.3s ease;
+}
+
+body.day-mode nav ul li a {
+    color: #333; /* Link color for day mode */
+}
+
+nav ul li a:hover {
+    color: #6E2AF5;
+    transform: translateY(-5px);
+}
+
+nav ul li a:active,
+nav ul li a:focus {
+    text-decoration: none; /* Remove underline on click and focus */
+}
+
+/* Button background for day mode */
+/* Button text color for day mode */
+/*.login-button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}*/
+
+/* .login-button:hover {
+    background-color: #555;
+} 
+.login-button:active {
+    background-color: #111;
+} */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s, color 0.3s;
+    margin-top: 70px; /* Adjusted to ensure it fits below the nav bar */
+}
+
+/* Night Mode */
+body.night-mode .container {
+    background: #444;
+    color: #eee;
+}
+
+/* Header and Form Styles */
+h2 {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+h2 i {
+    margin-right: 0.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 0.5rem; /* Reduced spacing */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"].error,
+input[type="email"].error,
+input[type="tel"].error,
+input[type="password"].error {
+    border-color: #f44336;
+}
+
+.error-message {
+    color: #f44336;
+    font-size: 0.875rem;
+}
+
+button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Gender Options 
+.gender-options {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.gender-options label {
+    display: flex;
+    align-items: center;
+}
+
+.gender-options input[type="radio"] {
+    margin-right: 0.5rem;
+}
+*/
+/* Night Mode Toggle Button */
+.night-mode-toggle {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: background 0.3s;
+    margin-left: 20px; /* Adjust spacing between the toggle and other nav items */
+}
+
+.night-mode-toggle:hover {
+    background: #0056b3;
+}
+
+/* Signup Form */
+.form-box {
+    max-width: 300px;
+    background: #f1f7fe;
+    overflow: hidden;
+    border-radius: 16px;
+    color: #010101;
+    margin-top: 70px; /* Ensure it’s positioned below the nav bar */
+}
+
+.form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 32px 24px 24px;
+    gap: 16px;
+    text-align: center;
+}
+
+/* Form Text */
+.title {
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Inputs Box */
+.form-container {
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #fff;
+    margin: 1rem 0 .5rem;
+    width: 100%;
+}
+
+.input {
+    background: none;
+    border: 0;
+    outline: 0;
+    height: 40px;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    font-size: .9rem;
+    padding: 8px 15px;
+}
+
+.form-section {
+    padding: 16px;
+    font-size: .85rem;
+    background-color: #e0ecfb;
+    box-shadow: rgb(0 0 0 / 8%) 0 -1px;
+}
+
+.form-section a {
+    font-weight: bold;
+    color: #0066ff;
+    transition: color .3s ease;
+}
+
+.form-section a:hover {
+    color: #005ce6;
+    text-decoration: underline;
+}
+
+/* Button */
+.form button {
+    background-color: #0066ff;
+    color: #fff;
+    border: 0;
+    border-radius: 24px;
+    padding: 10px 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color .3s ease;
+}
+
+.form button:hover {
+    background-color: #005ce6;
+}
+
+/* Password Container */
+.password-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.password-container input {
+    width: 100%;
+    padding: 10px 40px 10px 10px; /* Adjust padding to make space for the eye icon */
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+.password-container .toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Adjust as needed */
+    transform: translateY(-50%); /* Center the icon vertically */
+    cursor: pointer;
+    color: #888;
+    font-size: 1.25rem; /* Adjust size of the icon */
+}
+body {
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Additional styling for your form elements */
+.container {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 1.2s ease-in-out forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

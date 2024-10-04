@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <a href="#home" class="logo">
+            <img src="logo.png" alt="Logo">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <button class="night-mode-toggle" onclick="toggleNightMode()">
+                    <span id="modeIcon">🌙</span>
+                </button>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h2><i class="fas fa-user-plus"></i> Sign Up</h2>
+        <form id="signupForm" action="authenticate.php" method="post" onsubmit="return validatePasswords()">
+            <div class="form-group">
+                <div class="form-item">
+                    <label for="firstname">First Name:</label>
+                    <input type="text" id="firstname" placeholder="enter your firstname" name="firstname" required>
+                </div>
+                <div class="form-item">
+                    <label for="lastname">Last Name:</label>
+                    <input type="text" id="lastname" placeholder="enter your lastname" name="lastname" required>
+                </div>
+            </div>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="enter your Email"name="email" required>
+
+            <label for="phonenumber">Phone Number:</label>
+            <input type="tel" id="phonenumber" placeholder="enter your phonenumber"name="phonenumber" required>
+
+            <div class="password-container">
+                <label for="password">New Password:</label>
+                <input type="password" id="password" placeholder="enter your password"name="password" required>
+                <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('password')"></i>
+            </div>
+            <span id="passwordError" class="error-message"></span>
+
+            <div class="password-container">
+                <label for="recheckpassword">Confirm Password:</label>
+                <input type="password" id="recheckpassword" placeholder="enter your password"name="recheckpassword" required>
+                <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('recheckpassword')"></i>
+            </div>
+
+            <button type="submit"><i class="fas fa-check"></i> Submit</button>
+        </form>
+        <p>Already have an account? <a href="login1.html"><i class="fas fa-sign-in-alt"></i> Login here</a></p>
+    </div>
+
+    <script>
+        function validatePasswords() {
+            var password = document.getElementById('password').value;
+            var recheckPassword = document.getElementById('recheckpassword').value;
+            var passwordError = document.getElementById('passwordError');
+            var passwordPattern = /^(?=.*[A-Z])(?=.*\d)/;
+
+            if (!passwordPattern.test(password)) {
+                document.getElementById('password').classList.add('error');
+                passwordError.textContent = 'Password must contain at least one uppercase letter and one number.';
+                return false;
+            } else {
+                document.getElementById('password').classList.remove('error');
+                passwordError.textContent = '';
+            }
+
+            if (password !== recheckPassword) {
+                document.getElementById('password').classList.add('error');
+                document.getElementById('recheckpassword').classList.add('error');
+                passwordError.textContent = 'Passwords do not match.';
+                return false;
+            } else {
+                document.getElementById('password').classList.remove('error');
+                document.getElementById('recheckpassword').classList.remove('error');
+                passwordError.textContent = '';
+            }
+            return true;
+        }
+
+        function toggleNightMode() {
+            var body = document.body;
+            var modeIcon = document.getElementById('modeIcon');
+
+            if (body.classList.toggle('night-mode')) {
+                modeIcon.textContent = '☀️'; // Sun icon for day mode
+            } else {
+                modeIcon.textContent = '🌙'; // Moon icon for night mode
+            }
+        }
+
+        function togglePasswordVisibility(id) {
+            var passwordInput = document.getElementById(id);
+            var eyeIcon = passwordInput.nextElementSibling;
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.classList.remove("fa-eye");
+                eyeIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.classList.remove("fa-eye-slash");
+                eyeIcon.classList.add("fa-eye");
+            }
+        }
+        
+        window.addEventListener("load", function() {
+            document.body.style.opacity = "1";
+        });
+
+
+    </script>
+</body>
+</html>

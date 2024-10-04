@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <a href="#home" class="logo">
+            <img src="logo.png" alt="Logo">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <!--<li><a href="login1.html" class="nav-link">Login</a></li>-->
+                <!--<button class="button login-button" onclick="window.location.href='signup.html';">
+                    <span class="button-content">Login</span>-->
+                </button>
+                <button class="night-mode-toggle" onclick="toggleNightMode()">
+                    <span id="modeIcon">🌙</span>
+                </button>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h2><i class="fas fa-sign-in-alt"></i> Login</h2>
+            <label for="email">Email:</label>
+            <input type="text" id="email" placeholder="enter your email" name="email" required>
+
+            <div class="password-container">
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="enter your password" name="password" required>
+                <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('password')"></i>
+            </div>
+
+            <button type="submit"><i class="fas fa-sign-in-alt"></i> Login</button>
+        </form>
+        
+        <!-- Forgot Password Link -->
+        <p><a href="forgot_password.html"><i class="fas fa-unlock-alt"></i> Forgot your password?</a></p>
+        
+        <p>New user? <a href="signup.html"><i class="fas fa-user-plus"></i> Sign up here</a></p>
+    </div>
+
+    <script>
+        function toggleNightMode() {
+            var body = document.body;
+            var modeIcon = document.getElementById('modeIcon');
+
+            if (body.classList.toggle('night-mode')) {
+                modeIcon.textContent = '☀️'; // Sun icon for day mode
+            } else {
+                modeIcon.textContent = '🌙'; // Moon icon for night mode
+            }
+        }
+
+        function togglePasswordVisibility(id) {
+            var passwordInput = document.getElementById(id);
+            var eyeIcon = passwordInput.nextElementSibling;
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.classList.remove("fa-eye");
+                eyeIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.classList.remove("fa-eye-slash");
+                eyeIcon.classList.add("fa-eye");
+            }
+        }
+        
+        window.addEventListener("load", function() {
+            document.body.style.opacity = "1";
+        });
+
+
+    </script>
+</body>
+</html>

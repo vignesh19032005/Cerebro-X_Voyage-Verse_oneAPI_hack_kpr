@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Email Verification</h2>
+        <form action="verify.php" method="post">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required readonly>
+
+            <label for="verification_code">Verification Code:</label>
+            <input type="text" id="verification_code" placeholder="Enter otp" name="verification_code" required>
+
+            <button type="submit">Verify</button>
+        </form>
+    </div>
+
+    <script>
+        // Function to get URL parameters
+        function getQueryParam(param) {
+            let urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Set the email field value
+        document.getElementById('email').value = getQueryParam('email');
+
+        
+    window.addEventListener("load", function() {
+        document.body.style.opacity = "1";
+    });
+
+
+    </script>
+</body>
+</html>
