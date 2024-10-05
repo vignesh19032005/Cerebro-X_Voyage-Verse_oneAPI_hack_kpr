@@ -13,13 +13,13 @@ import torch
 
 #load_dotenv()
 
-FOURSQUARE_API_KEY = 'fsq3yvtdrodkSsvpW3y6fQP0IGJJrsxuRFlSwNTwriZXWz0='
-OPENCAGE_API_KEY = 'b579176661e0476d9b4781624e9d0d77'
-GOOGLE_MAPS_API_KEY = 'AIzaSyBJ_RSZJjG-_VzDdFRH-pJffj5CN_btq_k'
-NEWS_API_KEY = '9cc4add3803445daa4d68f3906b88d71'
-FOURSQUARE_ENDPOINT = 'https://api.foursquare.com/v3/places/search'
-OPENCAGE_ENDPOINT = 'https://api.opencagedata.com/geocode/v1/json'
-NEWS_API_ENDPOINT = 'https://newsapi.org/v2/everything' 
+FOURSQUARE_API_KEY = os.getenv('FOURSQUARE_API_KEY')
+OPENCAGE_API_KEY = os.getenv('OPENCAGE_API_KEY')
+GOOGLE_MAPS_API_KEY = os.getenv('GOOGLE_MAPS_API_KEY')
+NEWS_API_KEY = os.getenv('NEWS_API_KEY')
+FOURSQUARE_ENDPOINT = os.getenv('FOURSQUARE_ENDPOINT')
+OPENCAGE_ENDPOINT = os.getenv('OPENCAGE_ENDPOINT')
+NEWS_API_ENDPOINT = os.getenv('NEWS_API_ENDPOINT')
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 class ModelInitializer:
