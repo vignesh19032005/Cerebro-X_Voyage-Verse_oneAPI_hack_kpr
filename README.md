@@ -103,8 +103,38 @@ The personalized itinerary is provided to users via a beautifully crafted, detai
 
 ---
 
-## **Comparison**
-![compar](https://github.com/user-attachments/assets/90930b58-04c7-4a64-a469-e4de4571cd4d)
+## Advantages of Migrating to OneAPI
+
+-  Availability of High Computing Services
+-  Good Developer Support
+-  Seamless Interface
+
+## Intel OneAPI vs AWS Inference Speed Comparison
+
+![image](https://github.com/tejasram2003/LlamaHunt/assets/118297543/116bb402-e630-4f21-bbcc-9f01f57f363a)
+
+
+
+## Utilizing Intel OneAPI pytorch Acceleration
+
+To utilize Intel's acceleration, we're using a library <code>intel_extension_for_pytorch</code> 
+
+```
+import intel_extension_for_pytorch as ipex
+
+optimized_tag_generator = ipex.optimize(tag_generator, dtype=torch.bfloat16)
+```
+
+![intel_acceleration_comparison](https://github.com/tejasram2003/LlamaHunt/assets/118297543/87d62f5a-8945-4782-b2b2-ecdbe752900c)
+
+
+And as it can be observed, both the models performed observably better with Intel's acceleration library.
+
+## Acknowledgments
+
+- Special thanks to Intel DevCloud for providing resources for efficient scaling and performance.
+- Inspired by the need to streamline the job search process for job seekers.
+
 
 ---
 
