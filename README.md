@@ -96,8 +96,9 @@ To get started with **Voyage Verse**:
 ## **Output**
 
 The personalized itinerary is provided to users via a beautifully crafted, detailed PDF. Here’s an example of what you can expect:
-![output](output.jpg)
-![output1](output.jpg)
+![output](output(2).jpg)
+![output1](output(2)2.jpg)
+![output1](output(2)3.jpg)
 
 ---
 
