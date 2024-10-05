@@ -97,9 +97,12 @@ To get started with **Voyage Verse**:
 ## **Output**
 
 The personalized itinerary is provided to users via a beautifully crafted, detailed PDF. Here’s an example of what you can expect:
-![output1](output_3.jpg)
-![output](output_1.jpg)
-![output2](output_2.jpg)
+![WhatsApp Image 2024-10-05 at 10 44 47_e491d286](https://github.com/user-attachments/assets/a092a500-eea7-4381-b1c9-dfccd587fa1e)
+
+![Untitled design](https://github.com/user-attachments/assets/8318309e-9a4f-4a18-9712-fedfe437d0f5)
+
+![WhatsApp Image 2024-10-05 at 10 43 26_043ef1c9](https://github.com/user-attachments/assets/fcf08995-294c-4266-b114-cdcbaff30da5)
+
 
 ---
 
