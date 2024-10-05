@@ -139,7 +139,11 @@ And as it can be observed, both the models performed observably better with Inte
 
 ---
 
-## Contact
+## Contact Us
 
-For any inquiries or feedback, please contact vigneshlakshmanababu@gmail.com, vigneshhariraj@gmail.com, jayashri.v2004@gmail.com, b.karthika7204@gmail.com 
+For any inquiries or feedback, please contact 
+vigneshlakshmanababu@gmail.com, 
+vigneshhariraj@gmail.com, 
+jayashri.v2004@gmail.com, 
+b.karthika7204@gmail.com 
 
