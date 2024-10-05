@@ -111,7 +111,8 @@ The personalized itinerary is provided to users via a beautifully crafted, detai
 
 ## Intel OneAPI vs AWS Inference Speed Comparison
 
-![image](https://github.com/tejasram2003/LlamaHunt/assets/118297543/116bb402-e630-4f21-bbcc-9f01f57f363a)
+![compar](https://github.com/user-attachments/assets/27f800d0-5667-4d91-bba0-9b4a412244d0)
+
 
 
 
@@ -125,9 +126,6 @@ import intel_extension_for_pytorch as ipex
 optimized_tag_generator = ipex.optimize(tag_generator, dtype=torch.bfloat16)
 ```
 
-![intel_acceleration_comparison](https://github.com/tejasram2003/LlamaHunt/assets/118297543/87d62f5a-8945-4782-b2b2-ecdbe752900c)
-
-
 And as it can be observed, both the models performed observably better with Intel's acceleration library.
 
 ## Acknowledgments
@@ -138,5 +136,7 @@ And as it can be observed, both the models performed observably better with Inte
 
 ---
 
+## Contact
 
+For any inquiries or feedback, please contact vigneshlakshmanababu@gmail.com, vigneshhariraj@gmail.com, jayashri.v2004@gmail.com, b.karthika7204@gmail.com 
 
