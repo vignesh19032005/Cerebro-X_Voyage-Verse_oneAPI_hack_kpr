@@ -32,6 +32,7 @@
 
 **Input**:  
 Users provide travel details such as destination, budget, and preferences. Voyage Verse uses this information, along with real-time data, to create the perfect travel itinerary.
+![Flowchart (4)](https://github.com/user-attachments/assets/08ed4ae9-0137-4d2a-a669-91a266f77388)
 
 - **Home Page**:  
   ![home](home.jpg)
@@ -104,4 +105,8 @@ The personalized itinerary is provided to users via a beautifully crafted, detai
 
 ## **Comparison**
 ![compar](https://github.com/user-attachments/assets/90930b58-04c7-4a64-a469-e4de4571cd4d)
+
+---
+
+
 
