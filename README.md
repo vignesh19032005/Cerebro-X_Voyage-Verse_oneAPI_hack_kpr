@@ -101,3 +101,7 @@ The personalized itinerary is provided to users via a beautifully crafted, detai
 ![output2](output_2.jpg)
 
 ---
+
+## **Comparison**
+![compar](https://github.com/user-attachments/assets/90930b58-04c7-4a64-a469-e4de4571cd4d)
+
