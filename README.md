@@ -101,8 +101,3 @@ The personalized itinerary is provided to users via a beautifully crafted, detai
 ![output2](output_2.jpg)
 
 ---
-
-## **Future Enhancements**
-
-- **Intel OneAPI Integration**:  
-  Integrating Intel's OneAPI for more efficient use of compute resources and acceleration of AI-driven tasks.
