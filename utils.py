@@ -25,8 +25,6 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 class ModelInitializer:
     def __init__(self):
         self.model_name_or_path = "TheBloke/Mistral-7B-Instruct-v0.2-AWQ"
-        #self.model_name_or_path = "AMead10/Llama-3.2-1B-Instruct-AWQ"
-        # max_memory = {i: f"{int(torch.cuda.get_device_properties(i).total_memory * 0.99/ (1024**3))}GB" for i in range(torch.cuda.device_count())}
 
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_name_or_path)
         # self.model = AutoModelForCausalLM.from_pretrained(self.model_name_or_path, low_cpu_mem_usage=True, device_map="auto",max_memory=max_memory)
